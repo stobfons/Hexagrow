@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e4c0807073342a4999a1fcf9ffec99a
+guid: 8a9756f5c67a8f348ad36a4dc2dd50d1
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -18,8 +18,8 @@ ScriptedImporter:
   viewportOptions: 0
   preserveViewport: 0
   advancedMode: 0
-  predefinedResolutionIndex: 0
-  targetResolution: 2160
+  predefinedResolutionIndex: 1
+  targetResolution: 1080
   resolutionMultiplier: 1
   stepDistance: 10
   samplingStepDistance: 100
@@ -39,16 +39,16 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: TitleSprite
+      name: 
       originalName: 
-      pivot: {x: 0.50007796, y: 0.50018334}
+      pivot: {x: 0, y: 0}
       alignment: 0
-      border: {x: 20, y: 20, z: 20, w: 20}
+      border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1924
-        height: 1091
-      spriteID: 4e414a0951973e74aaabff65ca7c5d0d
+        width: 0
+        height: 0
+      spriteID: 00344217d7cdbd1489ab6b83a235b2a1
     PhysicsOutlines: []
