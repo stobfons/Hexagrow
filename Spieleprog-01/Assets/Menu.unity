@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 60064426}
+  map: {fileID: 1812188765}
 --- !u!1 &1047799101
 GameObject:
   m_ObjectHideFlags: 0

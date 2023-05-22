@@ -33,6 +33,11 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    public bool rightTile()
+    {
+        // if(tile == tileDatas.)
+        return true;
+    }
    /* public TileData GetTileData(Vector3Int tilePosition)
     {
         TileBase tile = map.GetTile(tilePosition);

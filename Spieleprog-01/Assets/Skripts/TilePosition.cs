@@ -24,4 +24,9 @@ public class TilePosition : MonoBehaviour
 
         }
     }
+
+    public void CorrectTile()
+    {
+
+    }
 }
