@@ -6,52 +6,57 @@ public class Editor
 {
     public static void Main(string[] args)
     {
-        title = "error";
-        BG = "000000";
-        Path = "000000";
-        BGEmpty = "000000";
-        BGDeep = "000000";
-        EStroke = "000000";
+       string title = "error";
+        string BG = "000000";
+        string Path = "000000";
+        string BGEmpty = "000000";
+        string BGDeep = "000000";
+        string EStroke = "000000";
 
-        Stone = new string[3];
+        string[] Stone = new string[3];
         Stone[0] = "000000";
         Stone[1] = "000000";
         Stone[2] = "000000";
 
-        Detail = new string[3];
+        string[] Detail = new string[3];
         Detail[0] = "000000";
         Detail[1] = "000000";
         Detail[2] = "000000";
 
-        StoneEmpty = new string[3];
+        string[] StoneEmpty = new string[3];
         StoneEmpty[0] = "000000";
         StoneEmpty[1] = "000000";
         StoneEmpty[2] = "000000";
 
-        DetailEmpty = new string[3];
+        string[] DetailEmpty = new string[3];
         DetailEmpty[0] = "000000";
         DetailEmpty[1] = "000000";
         DetailEmpty[2] = "000000";
 
-        StoneDeep = new string[3];
+        string[] StoneDeep = new string[3];
         StoneDeep[0] = "000000";
         StoneDeep[1] = "000000";
         StoneDeep[2] = "000000";
 
-        DetailDeep = new string[3];
+        string[] DetailDeep = new string[3];
         DetailDeep[0] = "000000";
         DetailDeep[1] = "000000";
         DetailDeep[2] = "000000";
 
-        Scanner loader = new Scanner(new File("svg.txt"));
+        //var loader = new Scanner(new File("svg.txt"));
+//const Int32 BufferSize = 128;
+using (var fileStream = File.OpenRead("svg.txt"))
+  using (var streamReader = new StreamReader(fileStream)) {
+    String line;
+   
         Console.WriteLine("Enter a search term:");
         string dT = Console.ReadLine();
         int l = 0;
         int i = 0;
         List<string> items = new List<string>();
-        while (loader.HasNextLine())
-        {
-            items.Add(loader.NextLine());
+         while ((line = streamReader.ReadLine()) != null)
+    {
+            items.Add(line);
 
             if (items[l].Contains(dT))
             {
@@ -59,6 +64,7 @@ public class Editor
             }
             l++;
         }
+  
 
         title = items[i];
         BG = items[i + 1];
@@ -101,14 +107,15 @@ public class Editor
         FileInfo originBG = new FileInfo("..\\Assets\\0 Spielfeld\\Background\\classic.svg");
         FileInfo originBGDeep = new FileInfo("..\\Assets\\0 Spielfeld\\Background\\classicDeep.svg");
 
-        Path(originPaths, title, BG, Path, Stone, Detail);
+        Editor.Path(originPaths, title, BG, Path, Stone, Detail);
         //Empty(originTiles, title, BGEmpty, StoneEmpty, DetailEmpty, EStroke);
         //BG(originBG, title, BGDeep, StoneDeep, DetailDeep);
         //BG(originBGDeep, title, BGDeep, StoneDeep, DetailDeep);
     }
     }
+    
 
-    public static void Path(FileInfo[] files, string title, string BG, string Path, string[] Stone, string[] Detail)
+    static void Path(FileInfo[] files, string title, string BG, string Path, string[] Stone, string[] Detail)
     {
         string sub = "";
         string newPath = "";
@@ -164,7 +171,7 @@ public class Editor
             Console.WriteLine(e.StackTrace);
         }
     }
-    public static void Empty(FileInfo[] files, string title, string BG, string[] Stone, string[] Detail, string Stroke)
+    static void Empty(FileInfo[] files, string title, string BG, string[] Stone, string[] Detail, string Stroke)
     {
         string sub = "";
         string newPath = "";
@@ -220,7 +227,7 @@ public class Editor
         }
     }
 
-    public static void BG(FileInfo file, string title, string BG, string[] Stone, string[] Detail)
+    static void BG(FileInfo file, string title, string BG, string[] Stone, string[] Detail)
     {
         string sub = "";
         StreamWriter newFile = null;
@@ -268,5 +275,5 @@ public class Editor
             Console.WriteLine(e1.StackTrace);
         }
     }
-}
 
+}
