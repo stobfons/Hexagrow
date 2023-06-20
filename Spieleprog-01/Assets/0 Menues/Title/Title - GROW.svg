@@ -27,8 +27,7 @@
 </style>
 <g id="Hintergrund">
 	<g id="Himmel">
-		<rect x="2" y="2" class="st0" width="1916" height="1076"/>
-		<path d="M1916,4v1072H4V4H1916 M1920,0H0v1080h1920V0L1920,0z"/>
+		<rect x="-5" y="-3.4" class="st0" width="1925.6" height="1083.4"/>
 	</g>
 	<g id="Sonne">
 		<circle class="st1" cx="1092" cy="289" r="275"/>
