@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class MenuDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -59,6 +60,7 @@ public class MenuDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             rectTransform.position = clickedTile;
             transform.SetParent(parentAfterDrag);
+            SceneManager.LoadScene("0Example");
         }
         else
         {
