@@ -23,7 +23,7 @@ public class MapManager : MonoBehaviour
 
             TileBase clickedTile = map.GetTile(gridPosition);
 
-            print("AT position "+ gridPosition+" there is a"+ clickedTile);
+            print("AT position "+ gridPosition+" there is a "+ clickedTile);
 
             // map.SetTileFlags(gridPosition, TileFlags.None);
             //  map.SetColor(gridPosition, Color.black);
