@@ -1,9 +1,15 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PathFollower : MonoBehaviour {
 
 	public float speed = 2f;
+	public string sceneName = "Menu";
+	public bool changeScene = false;
+	public float timer = -1;
 	public Transform pathParent;
 	Transform targetPoint;
 	int index;
@@ -27,7 +33,14 @@ public class PathFollower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		timer -= Time.deltaTime;
 		transform.position = Vector3.MoveTowards (transform.position, targetPoint.position, speed * Time.deltaTime);
-		
+		if (Vector3.Distance (transform.position, targetPoint.position) < 0.1f) 
+		{
+			if(changeScene){
+				if(((timer>=0)&&(timer<=0.5)))
+				  SceneManager.LoadScene(sceneName);
+			}
+		}
 	}
 }

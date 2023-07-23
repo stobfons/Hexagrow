@@ -8,9 +8,9 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: a57477913897c46af95d590f580878bd, type: 3}
-  svgType: 1
+  svgType: 0
   texturedSpriteMeshType: 0
-  svgPixelsPerUnit: 100
+  svgPixelsPerUnit: 110
   gradientResolution: 64
   alignment: 0
   customPivot: {x: 0, y: 0}
@@ -50,5 +50,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: 2de0db9310f71d74ca45b1772988a819
+      spriteID: 2911e79d8a7af714aa17925d6f076e97
     PhysicsOutlines: []

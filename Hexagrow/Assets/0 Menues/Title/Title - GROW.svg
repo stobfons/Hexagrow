@@ -24,10 +24,17 @@
 	.st18{fill:#29292C;stroke:#000000;stroke-miterlimit:10;}
 	.st19{fill:#1D181B;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
 	.st20{display:none;fill:#644128;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+	.st21{opacity:5.000000e-02;enable-background:new    ;}
+	.st22{opacity:0.15;enable-background:new    ;}
+	.st23{opacity:0.25;enable-background:new    ;}
+	.st24{opacity:0.35;enable-background:new    ;}
+	.st25{opacity:0.55;enable-background:new    ;}
+	.st26{opacity:0.75;enable-background:new    ;}
+	.st27{opacity:0.95;enable-background:new    ;}
 </style>
 <g id="Hintergrund">
 	<g id="Himmel">
-		<rect x="-5" y="-3.4" class="st0" width="1925.6" height="1083.4"/>
+		<rect x="-5" y="-1134.7" class="st0" width="1933.9" height="2214.7"/>
 	</g>
 	<g id="Sonne">
 		<circle class="st1" cx="1092" cy="289" r="275"/>
@@ -2483,4 +2490,13 @@
 			C833.4,390.4,838.3,454.4,849.4,466.9z"/>
 	</g>
 </g>
+<rect x="-3.3" y="-560.5" class="st21" width="1954.2" height="18.8"/>
+<rect x="-10.1" y="-600.5" class="st22" width="1954.2" height="40"/>
+<rect x="-20.4" y="-645.9" class="st23" width="1954.2" height="44.4"/>
+<rect x="-20.4" y="-703.7" class="st24" width="1954.2" height="57.8"/>
+<rect x="-14.4" y="-770.3" class="st25" width="1954.2" height="66.7"/>
+<rect x="-20.4" y="-855.7" class="st26" width="1954.2" height="85.3"/>
+<rect x="-20.4" y="-989" class="st27" width="1954.2" height="133.3"/>
+<rect x="-22.1" y="-1632.5" width="1954.2" height="643.6"/>
+<rect x="-22.1" y="-3780" width="1954.2" height="2147.4"/>
 </svg>
