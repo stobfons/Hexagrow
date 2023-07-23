@@ -63,7 +63,8 @@ public class DragToScene : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         {
             rectTransform.position = clickedTile;
             transform.SetParent(parentAfterDrag);
-            if(sceneName!="Exit"){
+            Debug.Log(sceneName);
+            if(!sceneName.Contains("Exit")){
             SceneManager.LoadScene(sceneName);  // wechsel der Scene laut Variable, if Exit -> Quit
             } else Application.Quit();
         }
