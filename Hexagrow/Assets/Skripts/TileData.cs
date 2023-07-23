@@ -5,9 +5,11 @@ using UnityEngine.Tilemaps;
 
  [CreateAssetMenu]
 
-public class TilaData : ScriptableObject
+public class TileData : ScriptableObject
 {
     public TileBase[] tiles;
 
 
+    public string nameTag;
+    public bool canPlaceOnTop;
 }

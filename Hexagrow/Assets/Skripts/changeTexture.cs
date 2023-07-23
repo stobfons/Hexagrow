@@ -8,6 +8,7 @@ public class changeTexture : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameObject.Find("MapManager").GetComponent<MapManager>().texturePack.Contains("halloween"))
         this.gameObject.GetComponent<SpriteRenderer>().sprite = newTexture;
 
     }

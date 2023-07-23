@@ -15,6 +15,7 @@ public class Settings : MonoBehaviour
         masterSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMasterVolume(val));
         musicSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMusicVolume(val));
         effectsSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeEffectsVolume(val));
+
     }
 
     public void setFullScreen(bool isFull){
