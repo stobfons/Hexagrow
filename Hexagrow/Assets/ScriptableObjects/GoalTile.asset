@@ -15,5 +15,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: e56d1e687fbdb2840b788253c275a497, type: 2}
   - {fileID: 11400000, guid: eb81e74ce65728a42aa23db667d5bb42, type: 2}
+  - {fileID: 11400000, guid: a75f3cdff66a5e14294ae192d12027b5, type: 2}
+  - {fileID: 11400000, guid: 33010573806cf164d8c73ad7a9c2d00b, type: 2}
   nameTag: goal
   canPlaceOnTop: 0

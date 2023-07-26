@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 11400000, guid: 9c1bc850e54378945911239a62d90e35, type: 2}
+  - {fileID: 11400000, guid: 8099337928fdc194d9974a0e72086ca4, type: 2}
+  - {fileID: 11400000, guid: a6ba4b7b7757d774f859ab3c034fe036, type: 2}
+  - {fileID: 11400000, guid: 3bcd6fc60c842c64a96d957b9879f1c2, type: 2}
   nameTag: barrier
   canPlaceOnTop: 0

@@ -17,5 +17,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3983213088554684f83400586f08770a, type: 2}
   - {fileID: 11400000, guid: bc11391ef2e683e4eae5bacad83446c1, type: 2}
   - {fileID: 11400000, guid: 9f6afb2eff422554ca115e2123e72c5a, type: 2}
+  - {fileID: 11400000, guid: 65bda2b7e1c261545b328d3d416cbdb3, type: 2}
+  - {fileID: 11400000, guid: b170b5a07fa8b264f8aa6e05a2550407, type: 2}
+  - {fileID: 11400000, guid: 2251d6040381830459bd4ca764501457, type: 2}
+  - {fileID: 11400000, guid: 5f18c788a138c7846866c1530a349ada, type: 2}
   nameTag: empty
   canPlaceOnTop: 1

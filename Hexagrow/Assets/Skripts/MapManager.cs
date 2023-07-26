@@ -15,15 +15,12 @@ public class MapManager : MonoBehaviour
    private TileBase[] goalTiles;
    [SerializeField]
    private TileBase[] barrierTiles;
-   [SerializeField]
-   private TileBase[] background;
-   [SerializeField]
-   private TileBase[] foreground;
     [SerializeField]
     private List<TileData> tileDatas;
 
     private Dictionary<TileBase, TileData> dataFromTiles;
     public string texturePack = "classic";
+    public bool texturepackAktivieren = true;
 
     private void Awake()
     {
@@ -79,13 +76,19 @@ public class MapManager : MonoBehaviour
         Vector3Int gridPosition = new Vector3Int(0,0,0);
         string nameTag;
         int pack = 0;
-        if(!texturePack.Contains("classic")){
+        if(texturepackAktivieren){
         for(gridPosition.x = -50; gridPosition.x<50; gridPosition.x++){
             for(gridPosition.y = -50; gridPosition.y<50; gridPosition.y++){
                 if(map.GetTile(gridPosition) != null){
                  nameTag = dataFromTiles[map.GetTile(gridPosition)].nameTag;
                  if(nameTag!=null){
+
+                if(texturePack.Contains("classic")) pack = 0;
                 if(texturePack.Contains("halloween")) pack = 1;
+                if(texturePack.Contains("christmas")) pack = 2;
+                if(texturePack.Contains("cherry")) pack = 3;
+
+
                   if(nameTag.Contains("empty")){
                     map.SetTile(gridPosition, emptyTiles[Random.Range((0+(pack*2)), (2+(pack*2)))]);
                   } 
@@ -96,7 +99,7 @@ public class MapManager : MonoBehaviour
                     map.SetTile(gridPosition, goalTiles[0+pack]);
                   } 
                   if(nameTag.Contains("barrier")){
-                    map.SetTile(gridPosition, barrierTiles[0]);
+                    map.SetTile(gridPosition, barrierTiles[0+pack]);
                   }  
                   }
                   }
