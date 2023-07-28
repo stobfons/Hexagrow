@@ -1156,6 +1156,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 1654322405}
+  emptyTiles: []
+  startTiles: []
+  goalTiles: []
+  barrierTiles: []
+  pathTiles: []
+  tileDatas: []
+  hexStack1: {fileID: 0}
+  hexStack2: {fileID: 0}
+  hexStack3: {fileID: 0}
+  wasChanged: 0
+  newPack: classic
 --- !u!1 &901608256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,7 +3168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 0
-  timer: 2
   speedScale: 2
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   Curve:
@@ -3184,7 +3194,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startFadedOut: 0
+  startFadedOut: 1
 --- !u!114 &1980312435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3198,7 +3208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 0
-  timer: 15
   speedScale: 3
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   Curve:
