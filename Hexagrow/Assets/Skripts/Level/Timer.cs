@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour
 
 
     void Update(){
+        if(!GameOver.isOver){
         currentTime -= Time.deltaTime;
         sek= Mathf.Floor(currentTime*-1)-(min*60);
         min=Mathf.Floor((currentTime*-1)/60);
@@ -21,6 +22,7 @@ public class Timer : MonoBehaviour
         if(sek<10){
             timerText.text = min+":"+"0"+sek+" min";
         } else timerText.text = min+":"+sek+" min";
+        } else timerText.text = "";
     }
 
     void Start()

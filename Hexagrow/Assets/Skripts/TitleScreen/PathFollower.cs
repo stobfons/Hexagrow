@@ -28,9 +28,11 @@ public class PathFollower : MonoBehaviour {
 			Gizmos.DrawLine (from, to);
 		}
 	}
+
 	void Start () {
 		index = 0;
 		targetPoint = pathParent.GetChild (index);
+		GameObject.Find("SaveManager").GetComponent<Loader>().loadNow();
 	}
 	
 	// Update is called once per frame
@@ -41,7 +43,7 @@ public class PathFollower : MonoBehaviour {
 		{
 			if(((timer>=0)&&(timer<=0.5)) || Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(0))
 			if(changeScene){
-				  SceneManager.LoadScene(sceneName);
+				SceneManager.LoadScene(sceneName);
 			}
 		}
 	}

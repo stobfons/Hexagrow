@@ -7,6 +7,9 @@ public class GameOver : MonoBehaviour
 {
     public static bool isOver = false;
     public GameObject GameOverUI;
+    [SerializeField] private AudioClip _clip;
+    public string stopTimer;
+    private static int c = 0;
 
     void Update()
     {
@@ -26,9 +29,14 @@ public class GameOver : MonoBehaviour
     }
 
     void Over(){
-        isOver = true;
+        if(c==0){
+            c=1;
         GameOverUI.SetActive(isOver);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
+        stopTimer = GameObject.Find("Counter").GetComponent<UnityEngine.UI.Text>().text;
+        print(stopTimer);
+        SoundManager.Instance.PlaySound(_clip);
+        }
     }
 
     public void returnMenu(){

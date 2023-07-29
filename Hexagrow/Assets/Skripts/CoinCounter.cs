@@ -16,9 +16,9 @@ public class CoinCounter : MonoBehaviour
     }
 
     void Update(){
-        print(coins+" : "+currentCoins);
         if(coins!=currentCoins){
                 changeCoins();
+                Loader.c = coins;
             }
         
     }
@@ -36,14 +36,13 @@ public class CoinCounter : MonoBehaviour
     }
 
     public static void setCoins(int v){
-        coins += v;
+        coins = v;
         if((coins)>10000){
             coins = 10000;
             }
         if(((coins)<0)){
             coins = 0;
         }
-        print(coins);
         
     }
 }

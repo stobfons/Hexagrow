@@ -16,7 +16,6 @@ public class TexturepackManager : MonoBehaviour
 
     void Update(){
         if(!pack.Contains(currentTexturepack)){
-            print("changes");
             changePack(pack);
         }
     }
@@ -31,6 +30,7 @@ public class TexturepackManager : MonoBehaviour
     void changePack(string tP)
     {
         currentTexturepack = tP;
+        Loader.cp = pack;
         GameObject.Find("MapManager").GetComponent<MapManager>().newPack = currentTexturepack;
         GameObject.Find("MapManager").GetComponent<MapManager>().wasChanged = true;
     }

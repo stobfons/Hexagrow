@@ -161,7 +161,6 @@ public class MapManager : MonoBehaviour
                                 pack = 2;
                             if (texturePack.Contains("cherry"))
                                 pack = 3;
-                            print(pack);
 
                             if (nameTag.Contains("empty"))
                             {

@@ -8,20 +8,26 @@ public class Settings : MonoBehaviour
    [SerializeField] private Slider masterSlider, musicSlider, effectsSlider;
    public InputField cheatInput;
 
+    void Update(){
+        masterSlider.value = Loader.v1;
+        musicSlider.value = Loader.v2;
+        effectsSlider.value = Loader.v3;
+    }
+
     void Start()
     {
-        SoundManager.Instance.ChangeMasterVolume(masterSlider.value);
-        SoundManager.Instance.ChangeMusicVolume(musicSlider.value);
-        SoundManager.Instance.ChangeEffectsVolume(effectsSlider.value);
+        masterSlider.value = Loader.v1;
+        musicSlider.value = Loader.v2;
+        effectsSlider.value = Loader.v3;
         masterSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMasterVolume(val));
         musicSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMusicVolume(val));
         effectsSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeEffectsVolume(val));
-
     }
 
 
     public void setFullScreen(bool isFull){
         Screen.fullScreen = isFull;
+        Loader.fs = isFull;
     }
 
     public void cheatCode(string cheat){
@@ -56,9 +62,20 @@ public class Settings : MonoBehaviour
             TexturepackManager.setPack("cherry");
             cheatInput.text = "";
             break;
+        case "addhalloween":
+            Loader.t[1] = 1;
+            cheatInput.text = "";
+            break;
+        case "addchristmas":
+            Loader.t[2] = 1;
+            cheatInput.text = "";
+            break;
+        case "addcherry":
+            Loader.t[3] = 1;
+            cheatInput.text = "";
+            break;
         default:
             break;
         }
     }
-
 }

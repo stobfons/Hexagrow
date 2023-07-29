@@ -42,11 +42,13 @@ public class DragAndDropToScene
     Vector3Int gridPosition;
     Transform parentAfterDrag; // set layer of object on the last
     private RectTransform rectTransform;
+    public string dragTo = "goal";
 
     /// Additional Variables
     //public string sceneName = "0Example"; // next scene
     private static string nextScene = "Menu";
     public static bool isChanging = false;
+    public static bool hasChanged = false;
     private float timer = 0.5f;
     [SerializeField]
     public AudioClip _clip;
@@ -59,14 +61,18 @@ public class DragAndDropToScene
             timer -=Time.deltaTime;
             if ((timer) < 0)
             {
-                isChanging = false;
-                if (nextScene.Contains("Exit"))
-                {
-                    Application.Quit();
-                }
-                else
-                {
+                if(SoundManager.ready){
+                    hasChanged=true;
+                    isChanging = false;
+                
+                    if (nextScene.Contains("Exit"))
+                    {
+                        Application.Quit();
+                    }
+                    else
+                    {
                     SceneManager.LoadScene(nextScene); 
+                    }
                 }
             }
         }
@@ -98,7 +104,7 @@ public class DragAndDropToScene
         {
             string nameTag = dataFromTiles[targetTile].nameTag;
             print(nameTag);
-            if (nameTag.Contains("goal"))
+            if (nameTag.Contains(dragTo))
             {
                 placeable = true;
             }

@@ -10,13 +10,13 @@ public class changeAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(MapManager.isPack.Contains("classic"))
+       if(Loader.cp.Contains("classic"))
         this.gameObject.GetComponent<AudioSource>().clip = audioFile[0];
-        if(MapManager.isPack.Contains("halloween"))
+        if(Loader.cp.Contains("halloween"))
         this.gameObject.GetComponent<AudioSource>().clip = audioFile[1];
-        if(MapManager.isPack.Contains("christmas"))
+        if(Loader.cp.Contains("christmas"))
         this.gameObject.GetComponent<AudioSource>().clip = audioFile[0];
-        if(MapManager.isPack.Contains("cherry"))
+        if(Loader.cp.Contains("cherry"))
         this.gameObject.GetComponent<AudioSource>().clip = audioFile[2];
     }
 }
