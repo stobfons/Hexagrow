@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47c473189a1f8e24c80a1675d612be4d, type: 3}
-  m_Name: CloseTile
+  m_Name: LeerTile
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: dfd245b96cb9a9b42bd73635f1b55621, type: 2}
-  - {fileID: 11400000, guid: e01fd081076b6de49b46b97cafe52f17, type: 2}
-  - {fileID: 11400000, guid: b0b7b0c4e41226144912189ef582df4d, type: 2}
-  - {fileID: 11400000, guid: acbe949cf7a1d3c41af4562a465988e9, type: 2}
-  nameTag: close
-  canPlaceOnTop: 0
+  - {fileID: 11400000, guid: 2261af6e67715f94aae6d1b89a9ab075, type: 2}
+  - {fileID: 11400000, guid: 9cf9a6a83bdccbc41b54f437b7cc24ee, type: 2}
+  - {fileID: 11400000, guid: 6e884a8e3c12cf941a92e3db4b137c28, type: 2}
+  - {fileID: 11400000, guid: 02d6429f9a96ea84e9c507814dcfab65, type: 2}
+  nameTag: leer
+  canPlaceOnTop: 1

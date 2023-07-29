@@ -8,6 +8,7 @@ public class PathFollower : MonoBehaviour {
 
 	public float speed = 2f;
 	public string sceneName = "Menu";
+	public static bool isChanging = false;
 	public bool changeScene = false;
 	public float timer = -1;
 	public Transform pathParent;
@@ -41,10 +42,18 @@ public class PathFollower : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, targetPoint.position, speed * Time.deltaTime);
 		if (Vector3.Distance (transform.position, targetPoint.position) < 0.1f) 
 		{
-			if(((timer>=0)&&(timer<=0.5)) || Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(0))
-			if(changeScene){
-				SceneManager.LoadScene(sceneName);
-			}
+			if(((timer>=0)&&(timer<=0.5)) || Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(0) || isChanging)
+				isChanging = true;
+            	timer -=Time.deltaTime;
+            	if ((timer) < 0) {
+                	if(SoundManager.ready){
+						print("Go to Menu");
+                   		SoundManager.safetyVar=true;
+                    	isChanging = false;
+                    	SceneManager.LoadScene("Menu"); 
+						TexturepackManager.newSceneAudio = true;
+            		}
+        		}
 		}
 	}
 }

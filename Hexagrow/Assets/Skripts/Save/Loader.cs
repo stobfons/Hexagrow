@@ -10,7 +10,7 @@ public class Loader : MonoBehaviour
     public static int l = 1;
     public static string cp = "classic";
     public static int[] t = {1,0,0,0};
-    public static string[] r;
+    public static int[] r = new int[l];
     public static int c = 100;
     public static float v1 = 1;
     public static float v2 = 1;

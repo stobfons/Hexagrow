@@ -15,7 +15,7 @@ public class GameOver : MonoBehaviour
     {
         if(isOver){
             Over();
-        }
+        } else Resume();
     }
 
     void Start(){
@@ -24,14 +24,15 @@ public class GameOver : MonoBehaviour
 
     public void Resume(){
         isOver = false;
-        GameOverUI.SetActive(isOver);
+        GameOverUI.SetActive(false);
         Time.timeScale = 1f;
+        c=0;
     }
 
     void Over(){
         if(c==0){
             c=1;
-        GameOverUI.SetActive(isOver);
+        GameOverUI.SetActive(true);
         Time.timeScale = 1f;
         stopTimer = GameObject.Find("Counter").GetComponent<UnityEngine.UI.Text>().text;
         print(stopTimer);
@@ -41,6 +42,6 @@ public class GameOver : MonoBehaviour
 
     public void returnMenu(){
         Resume();
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("LevelSelection");
     }
 }

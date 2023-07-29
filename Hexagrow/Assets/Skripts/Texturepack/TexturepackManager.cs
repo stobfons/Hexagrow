@@ -9,6 +9,7 @@ public class TexturepackManager : MonoBehaviour
 
     public static string currentTexturepack = "classic";
     private static string pack = currentTexturepack;
+    public static bool newSceneAudio = true;
 
     void Awake(){
         instance = this;

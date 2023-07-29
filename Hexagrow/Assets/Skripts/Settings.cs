@@ -22,6 +22,15 @@ public class Settings : MonoBehaviour
         masterSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMasterVolume(val));
         musicSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMusicVolume(val));
         effectsSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeEffectsVolume(val));
+        if(Loader.t[1]==1){
+            GameObject.Find("halloween").SetActive(true);
+        } else GameObject.Find("halloween").SetActive(false);
+        if(Loader.t[2]==1){
+            GameObject.Find("christmas").SetActive(true);
+        }else GameObject.Find("christmas").SetActive(false);
+        if(Loader.t[3]==1){
+            GameObject.Find("cherry").SetActive(true);
+        }else GameObject.Find("cherry").SetActive(false);
     }
 
 

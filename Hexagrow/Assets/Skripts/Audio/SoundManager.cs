@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public static bool temps = true;
     private float tempVolume;
     public static float v1,v2,v3;
+    public static bool safetyVar = false;
 
     void Awake(){
         if (Instance == null){
@@ -39,23 +40,25 @@ public class SoundManager : MonoBehaviour
 
         if(GameOver.isOver){
             Over();
-        } else Continue();
+        } else if(!PauseMenu.isPaused && !GameFinish.isFinish)Continue();
 
-        if((DragAndDropToScene.isChanging || BackButton.isChanging)&&!ready){
+        if(GameFinish.isFinish){
+            Over();
+        } else if(!PauseMenu.isPaused && !GameOver.isOver)Continue();
+
+        if((DragAndDropToScene.isChanging || BackButton.isChanging || LevelChager.isChanging || TryAgain.isChanging || PathFollower.isChanging)&&!ready){
             temps = false;
            ChangeMusicVolume(_musicSource.volume*0.98f);
-           print( _musicSource.volume);
            if(_musicSource.volume<0.1f){
             _musicSource.Stop();
             ready=true;
-            print("Temp: "+tempVolume);
             Loader.v2=tempVolume;
            }
         } else{
              temps = true;
-            if(DragAndDropToScene.hasChanged || BackButton.hasChanged){
+            if(DragAndDropToScene.hasChanged || BackButton.hasChanged || LevelChager.hasChanged || TryAgain.hasChanged || safetyVar){
              ready = false;
-            
+            safetyVar = false;
             }
         }
     }

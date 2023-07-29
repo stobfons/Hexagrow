@@ -19,6 +19,7 @@ public class CoinCounter : MonoBehaviour
         if(coins!=currentCoins){
                 changeCoins();
                 Loader.c = coins;
+                Loader.save();
             }
         
     }

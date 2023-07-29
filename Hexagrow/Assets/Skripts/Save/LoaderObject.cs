@@ -8,7 +8,7 @@ public class LoaderObject
     public int level;
     public string currentPack;
     public int[] texturePacks;
-    public string[] records;
+    public int[] records;
     public int coins;
     public float vol1;
     public float vol2;

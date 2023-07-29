@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 
-public class DragAndDropToScene
+public class LevelSelection
     : MonoBehaviour,
         IPointerDownHandler,
         IBeginDragHandler,
@@ -18,19 +18,7 @@ public class DragAndDropToScene
     private Tilemap map;
 
     [SerializeField]
-    private TileBase[] emptyTiles;
-
-    [SerializeField]
     private TileBase[] startTiles;
-
-    [SerializeField]
-    private TileBase[] goalTiles;
-
-    [SerializeField]
-    private TileBase[] barrierTiles;
-
-    [SerializeField]
-    private TileBase[] pathTiles;
 
     [SerializeField]
     private List<TileData> tileDatas;
@@ -42,42 +30,10 @@ public class DragAndDropToScene
     Vector3Int gridPosition;
     Transform parentAfterDrag; // set layer of object on the last
     private RectTransform rectTransform;
-    public string dragTo = "goal";
+    public string dragTo = "empty";
 
-    /// Additional Variables
-    //public string sceneName = "0Example"; // next scene
-    private static string nextScene = "Menu";
-    public static bool isChanging = false;
-    public static bool hasChanged = false;
-    private float timer = 0.5f;
     [SerializeField]
     public AudioClip _clip;
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isChanging)
-        {
-            timer -=Time.deltaTime;
-            if ((timer) < 0)
-            {
-                if(SoundManager.ready){
-                    hasChanged=true;
-                    isChanging = false;
-                
-                    if (nextScene.Contains("Exit"))
-                    {
-                        Loader.save();
-                        Application.Quit();
-                    }
-                    else
-                    {
-                    SceneManager.LoadScene(nextScene); 
-                    }
-                }
-            }
-        }
-    }
 
     private void Awake()
     {
@@ -97,7 +53,6 @@ public class DragAndDropToScene
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         gridPosition = map.WorldToCell(mousePosition);
         targetTile = map.GetTile(gridPosition);
@@ -121,8 +76,7 @@ public class DragAndDropToScene
         if (targetTile != null)
         {
             string nameTag = dataFromTiles[targetTile].nameTag;
-            print(nameTag);
-            if (nameTag.Contains("goal"))
+            if (nameTag.Contains(dragTo))
             {
                 placeable = true;
             }
@@ -131,10 +85,9 @@ public class DragAndDropToScene
         if (placeable)
         {
             map.SetTile(gridPosition, startTiles[MapManager.getPack()]);
-            Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
-            nextScene = eventData.pointerEnter.name;
             changeScene();
+
         } else eventData.pointerEnter.transform.position = eventData.pointerEnter.transform.parent.position; // Reset to Lap of Daddy (Parent Position)
     }
 
@@ -152,8 +105,9 @@ public class DragAndDropToScene
             CameraFade.time = 1f;
             CameraFade.direction = -1;
         }
-        
-        isChanging = true;
+        LevelChager.nextScene = gameObject.name;
+        LevelChager.isChanging = true;
+        Destroy(gameObject);
     }
 
     public TileData GetTileData(Vector3Int tilePosition)

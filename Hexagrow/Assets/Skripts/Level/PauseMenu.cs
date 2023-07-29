@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetKeyDown(KeyCode.Escape) && !GameOver.isOver && !GameFinish.isFinish){
             if(isPaused){
                 Resume();
             } else {
@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
 
     public void returnMenu(){
         Resume();
-        SceneManager.LoadScene("Menu");
+        
+        SceneManager.LoadScene("LevelSelection");
     }
 }
