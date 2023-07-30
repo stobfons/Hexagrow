@@ -41,6 +41,9 @@ public class GameOver : MonoBehaviour
     }
 
     public void returnMenu(){
+        
+        changeAudio.musicOf="LevelSelection"; 
+        TexturepackManager.newSceneAudio = true;
         Resume();
         SceneManager.LoadScene("LevelSelection");
     }

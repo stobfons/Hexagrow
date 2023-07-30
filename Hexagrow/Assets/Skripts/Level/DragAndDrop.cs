@@ -90,16 +90,20 @@ public void OnEndDrag(PointerEventData eventData)
         if(targetTile!=null){
             string nameTag = dataFromTiles[targetTile].nameTag;
 
-            if(nameTag.Contains("empty")&&(Input.mousePosition.y>750f)){ ///Overlay ends around 700
+            if(nameTag.Contains("empty")){ ///Overlay ends around 700
                 placeable=true;
             }
             if(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name.Contains("Joker1")){
                     joker = true;
-                    if(nameTag.Contains("barrier")&&(Input.mousePosition.y>750f)){ ///Overlay ends around 700
+                    if(nameTag.Contains("barrier")){ ///Overlay ends around 700
                          placeable=true;
                     } else placeable = false;
             }
-
+            print(Input.mousePosition.y);
+        if(Input.mousePosition.y<750f){
+            placeable = false;
+            joker = false;
+        }
         }else placeable = false;
         MapManager stacks = GameObject.Find("MapManager").GetComponent<MapManager>();
         

@@ -34,6 +34,7 @@ public class PathFollower : MonoBehaviour {
 		index = 0;
 		targetPoint = pathParent.GetChild (index);
 		GameObject.Find("SaveManager").GetComponent<Loader>().loadNow();
+		changeAudio.musicOf="Title";
 	}
 	
 	// Update is called once per frame
@@ -51,7 +52,9 @@ public class PathFollower : MonoBehaviour {
                    		SoundManager.safetyVar=true;
                     	isChanging = false;
                     	SceneManager.LoadScene("Menu"); 
+						changeAudio.musicOf="Menu";
 						TexturepackManager.newSceneAudio = true;
+						
             		}
         		}
 		}

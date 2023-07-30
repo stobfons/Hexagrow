@@ -72,7 +72,10 @@ public class DragAndDropToScene
                     }
                     else
                     {
-                    SceneManager.LoadScene(nextScene); 
+                    SceneManager.LoadScene(nextScene);
+                    changeAudio.musicOf=nextScene;
+                    TexturepackManager.newSceneAudio = true;
+                    
                     }
                 }
             }
@@ -80,7 +83,7 @@ public class DragAndDropToScene
     }
 
     private void Awake()
-    {
+    {   
         dataFromTiles = new Dictionary<TileBase, TileData>();
         rectTransform = GetComponent<RectTransform>();
         foreach (var tileData in tileDatas)

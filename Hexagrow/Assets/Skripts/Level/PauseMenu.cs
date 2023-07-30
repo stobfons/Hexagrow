@@ -37,8 +37,10 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void returnMenu(){
-        Resume();
         
+        changeAudio.musicOf="LevelSelection"; 
+        TexturepackManager.newSceneAudio = true;
+        Resume();
         SceneManager.LoadScene("LevelSelection");
     }
 }

@@ -36,6 +36,7 @@ public class BackButton : MonoBehaviour
                 if(SoundManager.ready){
                     hasChanged=true;
                     isChanging = false;
+                    TexturepackManager.newSceneAudio = true;
                 
                     if (nextScene.Contains("Exit"))
                     {
@@ -43,7 +44,10 @@ public class BackButton : MonoBehaviour
                     }
                     else
                     {
-                    SceneManager.LoadScene(nextScene); 
+                    SceneManager.LoadScene(nextScene);
+                    changeAudio.musicOf=nextScene; 
+                    TexturepackManager.newSceneAudio = true;
+                    
                     }
                 }
             }
