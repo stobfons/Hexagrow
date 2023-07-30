@@ -99,10 +99,10 @@ public void OnEndDrag(PointerEventData eventData)
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
             hasPath = MapManager.checkPath(); ///////////////// checks for Path after Tile was Dropped
-            print("Path was found?: "+hasPath); //////////// print
+            print("Path was found?: "+hasPath); //////////// print check
             if(((stacks.hexStack1.childCount+stacks.hexStack2.childCount+stacks.hexStack3.childCount)<=1)&&(hasPath=false)){
                 GameOver.isOver = true;
-            } {
+            } else {
                 if (hasPath=true){
                     print("Game Finish");
                     GameOver.isOver = true;
