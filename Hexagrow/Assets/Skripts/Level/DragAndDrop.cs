@@ -43,6 +43,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,
     [SerializeField]
     public AudioClip _clip;
     private GameObject hexClone;
+    public static bool hasPath = false;
 
 
 
@@ -97,8 +98,15 @@ public void OnEndDrag(PointerEventData eventData)
             map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(53*MapManager.getPack())]);
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
-            if((stacks.hexStack1.childCount+stacks.hexStack2.childCount+stacks.hexStack3.childCount)<=1){
+            hasPath = MapManager.checkPath(); ///////////////// checks for Path after Tile was Dropped
+            print("Path was found?: "+hasPath); //////////// print
+            if(((stacks.hexStack1.childCount+stacks.hexStack2.childCount+stacks.hexStack3.childCount)<=1)&&(hasPath=false)){
                 GameOver.isOver = true;
+            } {
+                if (hasPath=true){
+                    print("Game Finish");
+                    GameOver.isOver = true;
+                }
             }
         } else {
             eventData.pointerEnter.transform.position = eventData.pointerEnter.transform.parent.position; // Reset to Lap of Daddy (Parent Position) - aka SnapBack

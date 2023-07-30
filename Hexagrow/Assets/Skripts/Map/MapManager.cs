@@ -80,10 +80,6 @@ public class MapManager : MonoBehaviour
                 print(
                     "At position " + gridPosition + " there is a " + clickedTile + " called Tag: " + nameTag
                 );
-                if (clickedTile.name.Contains("1"))
-                {
-                    print("Can connect to 4");
-                }
             }
             else
                 print("At position " + gridPosition + " there is null!");
@@ -98,6 +94,16 @@ public class MapManager : MonoBehaviour
             return null;
         else
             return dataFromTiles[tile];
+    }
+
+    public static bool checkPath(){
+        for (gridPosition.x = -50; gridPosition.x < 50; gridPosition.x++)  {
+            for (gridPosition.y = -50; gridPosition.y < 50; gridPosition.y++) {
+                //////// onDragEnd check for Path
+            }
+        }
+
+        return false;
     }
 
 
