@@ -97,8 +97,9 @@ public class MapManager : MonoBehaviour
     }
 
     public static bool checkPath(){
-        for (gridPosition.x = -50; gridPosition.x < 50; gridPosition.x++)  {
-            for (gridPosition.y = -50; gridPosition.y < 50; gridPosition.y++) {
+        Vector3Int gridPosition = new Vector3Int(0, 0, 0);
+        for (gridPosition.x = -25; gridPosition.x <= 25; gridPosition.x++)  {
+            for (gridPosition.y = -25; gridPosition.y <= 0; gridPosition.y++) {
                 //////// onDragEnd check for Path
             }
         }
@@ -149,11 +150,16 @@ public class MapManager : MonoBehaviour
         Vector3Int gridPosition = new Vector3Int(0, 0, 0);
         string nameTag;
         int pack = 0;
-        
-            for (gridPosition.x = -50; gridPosition.x < 50; gridPosition.x++)
-            {
-                for (gridPosition.y = -50; gridPosition.y < 50; gridPosition.y++)
-                {
+            for (gridPosition.x = -26; gridPosition.x <= 26; gridPosition.x++)  { // remove Barrier Border x
+            map.SetTile(new Vector3Int(gridPosition.x, 1, 0), null);
+            map.SetTile(new Vector3Int(gridPosition.x, -26, 0), null);
+            }
+            for (gridPosition.y = -26; gridPosition.y <= 26; gridPosition.y++)  { // remove Barrier Border x
+            map.SetTile(new Vector3Int(-26,gridPosition.y, 0), null);
+            map.SetTile(new Vector3Int(26,gridPosition.y, 0), null);
+            }
+            for (gridPosition.x = -25; gridPosition.x <= 25; gridPosition.x++)  {
+            for (gridPosition.y = -25; gridPosition.y <= 0; gridPosition.y++) {
                     if (map.GetTile(gridPosition) != null)
                     {
                         nameTag = dataFromTiles[map.GetTile(gridPosition)].nameTag;
