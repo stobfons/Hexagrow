@@ -10,6 +10,9 @@ public class changeAudio : MonoBehaviour
 
     void Update()
     {
+        if(musicOf==null){
+            musicOf = "Menu";
+        }
         if(TexturepackManager.newSceneAudio){
             print(musicOf);
             if(musicOf.Contains("Menu")){

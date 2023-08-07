@@ -32,15 +32,46 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     public Transform hexStack3;
 
+    private int[,] hexMap = new int[51,26];
+
     private Dictionary<TileBase, TileData> dataFromTiles;
     private string texturePack = "classic";
     public bool wasChanged = false;
     public string newPack = "classic";
     public static string isPack;
 
+    public static bool checkNow = false;
+    private static bool foundPath = false;
+
     public void Start()
     {
         changeTextures();
+        Vector3Int gridPosition = new Vector3Int(0, 0, 0);
+        for (gridPosition.x = -25; gridPosition.x <= 25; gridPosition.x++)  {
+            for (gridPosition.y = -25; gridPosition.y <= 0; gridPosition.y++) {
+                if(map.GetTile(gridPosition)==null){
+                    hexMap[gridPosition.x+25,gridPosition.y+25]=0;
+                    //print("null");
+                }else{
+                    //print(dataFromTiles[map.GetTile(gridPosition)].nameTag);
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("empty"))
+                        hexMap[gridPosition.x+25,gridPosition.y+25]=0;
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("barrier"))
+                        hexMap[gridPosition.x+25,gridPosition.y+25]=0;
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("start"))
+                        hexMap[gridPosition.x+25,gridPosition.y+25]=2;
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("goal"))
+                        hexMap[gridPosition.x+25,gridPosition.y+25]=3;
+                }
+                
+                
+            }
+        }
+        for (int x = 0; x<51; x++)  {
+            for (int y = 0; y<26; y++) {
+                print(hexMap[x,y]);
+            }
+        }
     }
 
     private void Awake()
@@ -54,35 +85,22 @@ public class MapManager : MonoBehaviour
                 dataFromTiles.Add(tile, tileData);
             }
         }
+
     }
 
     private void Update()
     {
         if (wasChanged)
         { //Texturepack
-            print("Changed MapManager");
+            //print("Changed MapManager");
             wasChanged = false;
             texturePack = newPack;
             isPack = texturePack;
             changeTextures();
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPosition = map.WorldToCell(mousePosition);
-
-            TileBase clickedTile = map.GetTile(gridPosition);
-
-            if (clickedTile != null)
-            {
-                string nameTag = dataFromTiles[clickedTile].nameTag;
-
-                print(
-                    "At position " + gridPosition + " there is a " + clickedTile + " called Tag: " + nameTag
-                );
-            }
-            else
-                print("At position " + gridPosition + " there is null!");
+        if(checkNow){
+            checkPath();
+            checkNow = false;
         }
     }
 
@@ -96,15 +114,44 @@ public class MapManager : MonoBehaviour
             return dataFromTiles[tile];
     }
 
-    public static bool checkPath(){
+    public void checkPath(){
         Vector3Int gridPosition = new Vector3Int(0, 0, 0);
         for (gridPosition.x = -25; gridPosition.x <= 25; gridPosition.x++)  {
             for (gridPosition.y = -25; gridPosition.y <= 0; gridPosition.y++) {
                 //////// onDragEnd check for Path
+                if(map.GetTile(gridPosition)!=null){
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("path"))
+                        if(hexMap[gridPosition.x+25,gridPosition.y+25]==0){ // if not already found
+                            hexMap[gridPosition.x+25,gridPosition.y+25]=1; // path = 1
+                            print("1");
+                        } // ab hier muss man denken
+                        if(gridPosition.x+25>0&&gridPosition.y>0){ // larger than 0-0 (left up)
+                            if( hexMap[gridPosition.x+24,gridPosition.y+24]==2) // -1 -1 = start?
+                                    hexMap[gridPosition.x+25,gridPosition.y+25]=2;  // path = start
+                            if( hexMap[gridPosition.x+24,gridPosition.y+24]==3){ // -1 -1 = goal?
+                                if( hexMap[gridPosition.x+25,gridPosition.y+25]==2){ // path = start?
+                                 foundPath = true;   // Path found = true;
+                                } else hexMap[gridPosition.x+25,gridPosition.y+25]=3; //else path = 3;
+                            }
+                        print("-1-1");
+                        }
+                        if(gridPosition.x+25<51&&gridPosition.y>0){// right up 50-0
+                        print("+1-1");
+                        }
+                        if(gridPosition.x+25>0&&gridPosition.y<26){ // left down 0-25
+                        print("-1+1");
+                        }
+                        if(gridPosition.x+25<51&&gridPosition.y<26){ // right down 50-25
+                        print("+1+1");
+                        }
+                        
+                }
             }
         }
-
-        return false;
+        //print("Remaining Cards: "+((hexStack1.childCount+hexStack2.childCount+hexStack3.childCount)-1));
+        if(((hexStack1.childCount+hexStack2.childCount+hexStack3.childCount)<=1)&&foundPath!=true){
+            GameOver.isOver = true;
+        }
     }
 
 
