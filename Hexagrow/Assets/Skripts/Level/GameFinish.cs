@@ -48,16 +48,27 @@ public class GameFinish : MonoBehaviour
                 Loader.r[level-1] = stoppedTime;
             }
        } else Loader.r.Add(stoppedTime);
+       //GameObject.Find("Record").GetComponent<UnityEngine.UI.Text>().text = convertTime(Loader.r[level-1]);
+       //GameObject.Find("StoppeTime").GetComponent<UnityEngine.UI.Text>().text = stopTimer;
+       setTime.stoppedTime = stopTimer;
+       setTime.recordTime = convertTime(Loader.r[level-1]);
         SoundManager.Instance.PlaySound(_clip);
         Loader.save(); // saves everything 
         GameFinishUI.SetActive(true);
         MapManager.foundPath = false;
-        }
-
-        
-       
+        } 
     }
 
+    static string convertTime(int seconds){
+        int min= (int) Mathf.Floor((seconds)/60);
+        seconds = seconds - min*60;
+        string zero = "";
+        if(seconds<10){
+            zero = "0";
+        };
+        string timer = min+":"+zero+""+seconds+" min";
+        return timer;
+    }
     int getTime(string t){
         string minS = "";
         string secS = "";

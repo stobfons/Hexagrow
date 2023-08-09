@@ -108,6 +108,7 @@ public void OnEndDrag(PointerEventData eventData)
             map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(53*MapManager.getPack())]);
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
+            MapManager.checkNow = true;
         } else {
             eventData.pointerEnter.transform.position = eventData.pointerEnter.transform.parent.position; // Reset to Lap of Daddy (Parent Position) - aka SnapBack
         }
@@ -118,7 +119,7 @@ public void OnEndDrag(PointerEventData eventData)
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
         }
-        MapManager.checkNow = true;
+        
     }
 
     

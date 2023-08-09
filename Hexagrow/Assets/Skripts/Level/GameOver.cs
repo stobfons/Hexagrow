@@ -8,7 +8,6 @@ public class GameOver : MonoBehaviour
     public static bool isOver = false;
     public GameObject GameOverUI;
     [SerializeField] private AudioClip _clip;
-    public string stopTimer;
     private static int c = 0;
 
     void Update()
@@ -34,8 +33,6 @@ public class GameOver : MonoBehaviour
             c=1;
         GameOverUI.SetActive(true);
         Time.timeScale = 1f;
-        stopTimer = GameObject.Find("Counter").GetComponent<UnityEngine.UI.Text>().text;
-        print(stopTimer);
         SoundManager.Instance.PlaySound(_clip);
         }
     }
