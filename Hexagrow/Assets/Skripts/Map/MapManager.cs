@@ -41,7 +41,7 @@ public class MapManager : MonoBehaviour
     public static string isPack;
 
     public static bool checkNow = false;
-    private static bool foundPath = false;
+    public static bool foundPath = false;
 
     public void Start()
     {
@@ -291,7 +291,11 @@ public class MapManager : MonoBehaviour
             }
         }
         //print("Remaining Cards: "+((hexStack1.childCount+hexStack2.childCount+hexStack3.childCount)-1));
-        if(foundPath){ GameFinish.isFinish = true;}
+        if(foundPath){ 
+            GameFinish.isFinish = true;
+            
+
+            }
         if(((hexStack1.childCount+hexStack2.childCount+hexStack3.childCount)<=1)&&!foundPath){
             print("is Over");
             GameOver.isOver = true;

@@ -33,8 +33,7 @@ public class GameFinish : MonoBehaviour
     void Finish(){
         if(c==0){
             c=1;
-        //print(int.Parse((SceneManager.GetActiveScene().name).Substring(4, SceneManager.GetActiveScene().name.Length-4))); // get Level
-        int level = 1;
+        int.TryParse(SceneManager.GetActiveScene().name.Substring(5, SceneManager.GetActiveScene().name.Length-5), out int level); // get Level
 
         MapManager stacks = GameObject.Find("MapManager").GetComponent<MapManager>();
         if(level==Loader.l){
@@ -44,12 +43,15 @@ public class GameFinish : MonoBehaviour
         Time.timeScale = 1f;
         stopTimer = GameObject.Find("Counter").GetComponent<UnityEngine.UI.Text>().text;
         int stoppedTime = getTime(stopTimer);
-        //if(Loader.r[level]>stoppedTime){
-        //    Loader.r[level] = stoppedTime;
-       // }
+        if(Loader.r.Count>=level){
+            if(Loader.r[level-1]>stoppedTime){
+                Loader.r[level-1] = stoppedTime;
+            }
+       } else Loader.r.Add(stoppedTime);
         SoundManager.Instance.PlaySound(_clip);
         Loader.save(); // saves everything 
         GameFinishUI.SetActive(true);
+        MapManager.foundPath = false;
         }
 
         
@@ -69,7 +71,11 @@ public class GameFinish : MonoBehaviour
                 } else s = true; 
             }
         }
-        return ((int.Parse(minS)*60)+int.Parse(secS));
+        int.TryParse(minS, out int minN);
+        int.TryParse(secS, out int secN);
+        int time = minN*60 + secN;
+        //print(time);
+        return time;
     }
 
     public void returnMenu(){
