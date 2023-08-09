@@ -33,24 +33,27 @@ public class GameFinish : MonoBehaviour
     void Finish(){
         if(c==0){
             c=1;
-        int level = int.Parse((SceneManager.GetActiveScene().name).Substring(4, SceneManager.GetActiveScene().name.Length-4)); // get Level
+        //print(int.Parse((SceneManager.GetActiveScene().name).Substring(4, SceneManager.GetActiveScene().name.Length-4))); // get Level
+        int level = 1;
 
         MapManager stacks = GameObject.Find("MapManager").GetComponent<MapManager>();
         if(level==Loader.l){
             Loader.l++;
             Loader.c+=100+(((stacks.hexStack1.childCount+stacks.hexStack2.childCount+stacks.hexStack3.childCount)-1)*10); // add Coins if new Win
         } else Loader.c+=15+(((stacks.hexStack1.childCount+stacks.hexStack2.childCount+stacks.hexStack3.childCount)-1)*2); // add Coins if Win again
-        GameFinishUI.SetActive(true);
         Time.timeScale = 1f;
         stopTimer = GameObject.Find("Counter").GetComponent<UnityEngine.UI.Text>().text;
         int stoppedTime = getTime(stopTimer);
-        if(Loader.r[level]>stoppedTime){
-            Loader.r[level] = stoppedTime;
-        }
+        //if(Loader.r[level]>stoppedTime){
+        //    Loader.r[level] = stoppedTime;
+       // }
         SoundManager.Instance.PlaySound(_clip);
+        Loader.save(); // saves everything 
+        GameFinishUI.SetActive(true);
         }
 
-        Loader.save(); // saves everything
+        
+       
     }
 
     int getTime(string t){

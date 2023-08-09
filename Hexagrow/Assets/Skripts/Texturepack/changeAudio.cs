@@ -14,7 +14,7 @@ public class changeAudio : MonoBehaviour
             musicOf = "Menu";
         }
         if(TexturepackManager.newSceneAudio){
-            print(musicOf);
+            //print(musicOf);
             if(musicOf.Contains("Menu")){
                 if(Loader.cp.Contains("classic"))
                     this.gameObject.GetComponent<AudioSource>().clip = audioFile[0];

@@ -54,14 +54,21 @@ public class MapManager : MonoBehaviour
                     //print("null");
                 }else{
                     //print(dataFromTiles[map.GetTile(gridPosition)].nameTag);
-                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("empty"))
-                        hexMap[gridPosition.x+25,gridPosition.y+25]=0;
-                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("barrier"))
-                        hexMap[gridPosition.x+25,gridPosition.y+25]=0;
-                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("start"))
-                        hexMap[gridPosition.x+25,gridPosition.y+25]=2;
-                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("goal"))
-                        hexMap[gridPosition.x+25,gridPosition.y+25]=3;
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("empty")){
+                        hexMap[gridPosition.x+25,-gridPosition.y]=0;
+                    }
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("barrier")){
+                        hexMap[gridPosition.x+25,-gridPosition.y]=0;
+                        //print(gridPosition.x+25+" : "+(-gridPosition.y));
+                    }
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("start")){
+                        hexMap[gridPosition.x+25,-gridPosition.y]=2;
+                        //print(gridPosition.x+25+" : "+(gridPosition.y+25));
+                    }
+                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("goal")){
+                        hexMap[gridPosition.x+25,-gridPosition.y]=3;
+                        //print(gridPosition.x+25+" : "+(-gridPosition.y));
+                    }
                 }
                 
                 
@@ -69,7 +76,8 @@ public class MapManager : MonoBehaviour
         }
         for (int x = 0; x<51; x++)  {
             for (int y = 0; y<26; y++) {
-                print(hexMap[x,y]);
+                //print(hexMap[x,y]);
+                //if(hexMap[x,y]==3)print("Goal: "+x+" : "+y);
             }
         }
     }
@@ -99,8 +107,9 @@ public class MapManager : MonoBehaviour
             changeTextures();
         }
         if(checkNow){
-            checkPath();
+            //checkPath();
             checkNow = false;
+            checkPath();
         }
     }
 
@@ -119,37 +128,172 @@ public class MapManager : MonoBehaviour
         for (gridPosition.x = -25; gridPosition.x <= 25; gridPosition.x++)  {
             for (gridPosition.y = -25; gridPosition.y <= 0; gridPosition.y++) {
                 //////// onDragEnd check for Path
+                int x = gridPosition.x+25;
+                int y = -gridPosition.y;
                 if(map.GetTile(gridPosition)!=null){
-                    if(dataFromTiles[map.GetTile(gridPosition)].nameTag.Contains("path"))
-                        if(hexMap[gridPosition.x+25,gridPosition.y+25]==0){ // if not already found
-                            hexMap[gridPosition.x+25,gridPosition.y+25]=1; // path = 1
-                            print("1");
-                        } // ab hier muss man denken
-                        if(gridPosition.x+25>0&&gridPosition.y>0){ // larger than 0-0 (left up)
-                            if( hexMap[gridPosition.x+24,gridPosition.y+24]==2) // -1 -1 = start?
-                                    hexMap[gridPosition.x+25,gridPosition.y+25]=2;  // path = start
-                            if( hexMap[gridPosition.x+24,gridPosition.y+24]==3){ // -1 -1 = goal?
-                                if( hexMap[gridPosition.x+25,gridPosition.y+25]==2){ // path = start?
-                                 foundPath = true;   // Path found = true;
-                                } else hexMap[gridPosition.x+25,gridPosition.y+25]=3; //else path = 3;
+                    string temp = dataFromTiles[map.GetTile(gridPosition)].nameTag;
+                    if(temp.Contains("path"))
+                        if(hexMap[x,y]==0){ // if not already found
+                            hexMap[x,y]=1; // path = 1
+                            //print("1");
+                        
+                        //print(map.GetTile(gridPosition).name);
+                        if(x>0){
+                            if(map.GetTile(gridPosition).name.Contains("6") && hexMap[x,y]>0){
+                                //print("Contains 6");
+                                    Vector3Int tempPosition = new Vector3Int(gridPosition.x-1,gridPosition.y,gridPosition.z);
+                                if(hexMap[x-1,y]==2){ 
+                                    //print("Try Connection from ("+hexMap[x,y]+")"+(gridPosition.x)+" : "+(gridPosition.y)+ " to: ("+hexMap[x-1,y]+")"+(gridPosition.x-1)+" : "+(gridPosition.y) );
+                                    if(map.GetTile(tempPosition).name.Contains("3")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start")){
+                                        if(hexMap[x-1,y]==3){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=2;
+                                        //print("connected to start");
+                                    }
+                                }
+                                if(hexMap[x-1,y]==3){
+                                    if(map.GetTile(tempPosition).name.Contains("3")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal")){
+                                        if(hexMap[x-1,y]==2){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=3;
+                                        //print("connected to goal");
+                                    }
+                                }
                             }
-                        print("-1-1");
                         }
-                        if(gridPosition.x+25<51&&gridPosition.y>0){// right up 50-0
-                        print("+1-1");
-                        }
-                        if(gridPosition.x+25>0&&gridPosition.y<26){ // left down 0-25
-                        print("-1+1");
-                        }
-                        if(gridPosition.x+25<51&&gridPosition.y<26){ // right down 50-25
-                        print("+1+1");
+                            if(map.GetTile(gridPosition).name.Contains("1") && y>0 && hexMap[x,y]>0){
+                                //print("Contains 1");
+                                int even = 0;
+                                if(gridPosition.y%2==0)even=1;
+                                Vector3Int tempPosition = new Vector3Int(gridPosition.x-even,gridPosition.y+1,gridPosition.z);
+                                //print("Try Connection from ("+hexMap[x,y]+") "+(gridPosition.x)+" : "+(gridPosition.y)+ " to: ("+hexMap[x-even,y-1]+") "+(gridPosition.x-even)+" : "+(gridPosition.y+1) );
+                                //print("("+x+","+(y-1)+")");
+                                if(hexMap[x-even,y-1]==2){
+                                    
+                                    //print(dataFromTiles[map.GetTile(tempPosition)].nameTag); /////////
+                                    if(map.GetTile(tempPosition).name.Contains("4")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start")){
+                                        hexMap[x,y]=2;
+                                        if(hexMap[x-1,y]==3){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=2;
+                                        //print("connected to start");
+                                    }
+                                }
+                                if(hexMap[x-1,y-1]==3){
+                                    if(map.GetTile(tempPosition).name.Contains("4")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal")){
+                                        if(hexMap[x-1,y]==2){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=3;
+                                        //print("connected to goal");
+                                    }
+                                }
+                            }
+                            if(map.GetTile(gridPosition).name.Contains("5") && y<25 && hexMap[x,y]>0){
+                                //print("Contains 5");
+                                int even = 0;
+                                if(gridPosition.y%2!=0)even=1;
+                                Vector3Int tempPosition = new Vector3Int(gridPosition.x-even,gridPosition.y+1,gridPosition.z);
+                                //print("Try Connection from ("+hexMap[x,y]+")"+(gridPosition.x)+" : "+(gridPosition.y) +" to: ("+hexMap[x-even,y+1]+")"+(gridPosition.x-even)+" : "+(gridPosition.y+1) );
+                                if(hexMap[x-even,y+1]==2){
+                                    if(map.GetTile(tempPosition).name.Contains("2")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start")){
+                                        if(hexMap[x-even,y]==3){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=2;
+                                        //print("connected to start");
+                                    }
+                                }
+                                if(hexMap[x-even,y+1]==3){
+                                    if(map.GetTile(tempPosition).name.Contains("2")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal")){
+                                        if(hexMap[x,y]==2){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=3;
+                                        //print("connected to goal");
+                                    }
+                                }
+                            }
+
+                        
+                        if(x<50){
+                            if(map.GetTile(gridPosition).name.Contains("3") && hexMap[x,y]>0){
+                                //print("Contains 3");
+                                Vector3Int tempPosition = new Vector3Int(gridPosition.x+1,gridPosition.y,gridPosition.z);
+                                //print("Try Connection from ("+hexMap[x,y]+")"+(gridPosition.x)+" : "+(gridPosition.y) +" to: ("+hexMap[x+1,y]+")"+(gridPosition.x+1)+" : "+(gridPosition.y) );
+                                if(hexMap[x+1,y]==2){
+                                    if(map.GetTile(tempPosition).name.Contains("6")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start")){
+                                        if(hexMap[x,y]==3){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=2;
+                                        //print("connected to start");
+                                    }
+                                }
+                                if(hexMap[x+1,y]==3){
+                                    //print(dataFromTiles[map.GetTile(tempPosition)].nameTag);
+                                    if(map.GetTile(tempPosition).name.Contains("6")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal")){
+                                        //print("detected 3 to 6 or goal");
+                                        if(hexMap[x,y]==2){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=3;
+                                        //print("connected to goal");
+                                    }
+                                }
+                            }
+                            if(map.GetTile(gridPosition).name.Contains("2") && y>0 && hexMap[x,y]>0){
+                                //print("Contains 2");
+                                int even = 0;
+                                if(gridPosition.y%2!=0)even=1;
+                                Vector3Int tempPosition = new Vector3Int(gridPosition.x+even,gridPosition.y+1,gridPosition.z);
+                                //print("Try Connection from ("+hexMap[x,y]+")"+(gridPosition.x)+" : "+(gridPosition.y) +" to: ("+hexMap[x+even,y-1]+")"+(gridPosition.x+even)+" : "+(gridPosition.y+1) );
+                                if(hexMap[x+even,y-1]==2){
+                                    if(map.GetTile(tempPosition).name.Contains("5")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start")){
+                                        if(hexMap[x,y]==3){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=2;
+                                        //print("connected to start, hexMap["+(x)+","+(y)+"] = "+hexMap[x,y]);
+                                    }
+                                }
+                                if(hexMap[x+even,y-1]==3){
+                                    if(map.GetTile(tempPosition).name.Contains("5")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal")){
+                                        if(hexMap[x,y]==2){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=3;
+                                        //print("connected to goal");
+                                    }
+                                }
+                            }
+                            if(map.GetTile(gridPosition).name.Contains("4") && y<25 && hexMap[x,y]>0){
+                                //print("Contains 4");
+                                int even = 0;
+                                if(gridPosition.y%2!=0)even=1;
+                                //print(even);
+                                Vector3Int tempPosition = new Vector3Int(gridPosition.x+even,gridPosition.y-1,gridPosition.z);
+                                //print("Try Connection from ("+hexMap[x,y]+")"+(gridPosition.x)+" : "+(gridPosition.y) +" to: ("+hexMap[x+even,y+1]+")"+(gridPosition.x+even)+" : "+(gridPosition.y-1) );
+                                if(hexMap[x+even,y+1]==2){
+                                    if(map.GetTile(tempPosition).name.Contains("1")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start")){
+                                        if(hexMap[x,y]==3){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=2;
+                                        //print("connected to start");
+                                    }
+                                }
+                                if(hexMap[x+even,y+1]==3){
+                                    if(map.GetTile(tempPosition).name.Contains("1")||dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal")){
+                                        if(hexMap[x,y]==2){
+                                            foundPath = true;
+                                        }else hexMap[x,y]=3;
+                                        //print("connected to goal");
+                                    }
+                                }
+                            }
                         }
                         
+                    } 
                 }
             }
         }
         //print("Remaining Cards: "+((hexStack1.childCount+hexStack2.childCount+hexStack3.childCount)-1));
-        if(((hexStack1.childCount+hexStack2.childCount+hexStack3.childCount)<=1)&&foundPath!=true){
+        if(foundPath){ GameFinish.isFinish = true;}
+        if(((hexStack1.childCount+hexStack2.childCount+hexStack3.childCount)<=1)&&!foundPath){
+            print("is Over");
             GameOver.isOver = true;
         }
     }
@@ -242,7 +386,7 @@ public class MapManager : MonoBehaviour
                             }
                             if (nameTag.Contains("path"))
                             {
-                                map.SetTile(  gridPosition, pathTiles[getTile(map.GetTile(gridPosition).name) + (pack * 53)]
+                                map.SetTile(  gridPosition, pathTiles[getTile(map.GetTile(gridPosition).name) + (pack * 54)]
                                 );
                             }
                         }
@@ -372,6 +516,8 @@ public class MapManager : MonoBehaviour
             return 51; 
         case ("23456Sprite"):
             return 52; 
+        case ("123456.2Sprite"):
+            return 53;
         default:
             return 0;
             

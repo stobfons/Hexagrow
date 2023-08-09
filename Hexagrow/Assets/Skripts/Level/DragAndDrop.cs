@@ -108,8 +108,6 @@ public void OnEndDrag(PointerEventData eventData)
             map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(53*MapManager.getPack())]);
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
-            //hasPath = MapManager.checkPath(); ///////////////// checks for Path after Tile was Dropped
-            //print("Path was found?: "+hasPath); //////////// print check
         } else {
             eventData.pointerEnter.transform.position = eventData.pointerEnter.transform.parent.position; // Reset to Lap of Daddy (Parent Position) - aka SnapBack
         }
@@ -121,16 +119,6 @@ public void OnEndDrag(PointerEventData eventData)
             SoundManager.Instance.PlaySound(_clip);
         }
         MapManager.checkNow = true;
-        ///////// after placed check
-       /* if(((stacks.hexStack1.childCount+stacks.hexStack2.childCount+stacks.hexStack3.childCount)<=1)){
-                GameOver.isOver = true;
-            } else {
-                if (hasPath){
-                    print("Game Finish");
-                    GameOver.isOver = true;
-                }
-            }
-        */
     }
 
     
