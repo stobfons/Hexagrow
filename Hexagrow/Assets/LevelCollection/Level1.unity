@@ -662,10 +662,10 @@ RectTransform:
   m_Father: {fileID: 2136920111}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 78.24903, y: -39.8515}
-  m_SizeDelta: {x: 156.49806, y: 79.703}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &333127523
 GameObject:
@@ -787,8 +787,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 955858917}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+      - m_Target: {fileID: 955858918}
+        m_TargetAssemblyTypeName: GameFinish, Assembly-CSharp
         m_MethodName: returnMenu
         m_Mode: 1
         m_Arguments:
@@ -3401,10 +3401,10 @@ RectTransform:
   m_Father: {fileID: 2136920111}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 234.7471, y: -39.8515}
-  m_SizeDelta: {x: 156.49806, y: 79.703}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1174860360
 GameObject:
@@ -5684,10 +5684,10 @@ RectTransform:
   m_Father: {fileID: 2136920111}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.24515, y: -39.8515}
-  m_SizeDelta: {x: 156.49806, y: 79.703}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2072454753
 GameObject:
@@ -6141,6 +6141,7 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: 1203b6415fe150f42ab0fe6fa18f6ed3, type: 3}
   - {fileID: 3286163911610860551, guid: bf460fd9bc4806f448af3fc395efe7da, type: 3}
   - {fileID: 3286163911610860551, guid: 91b36577417193d40a8b8e8f03412e8b, type: 3}
+  - {fileID: 3286163911610860551, guid: f9bbc415d12952144a486bb27f27b811, type: 3}
   - {fileID: 3286163911610860551, guid: 7b5c5570ec06ee4409d8cdcffed149df, type: 3}
   - {fileID: 3286163911610860551, guid: 5cc16b459a7084547af854d650e990ef, type: 3}
   - {fileID: 3286163911610860551, guid: e6292ca9877370243a80ff36daab1cb0, type: 3}
@@ -6194,6 +6195,7 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: 536ef65f2b754c548b680a5c6e04d777, type: 3}
   - {fileID: 3286163911610860551, guid: 4ff4dbc11e04b854391dd19c0ae83757, type: 3}
   - {fileID: 3286163911610860551, guid: 28ba728b2fbf3f04ca762dfa81a7451e, type: 3}
+  - {fileID: 3286163911610860551, guid: eee947e081a557142b10ead664dbd16f, type: 3}
   - {fileID: 3286163911610860551, guid: cb288847aacd9ea4ab36dde3ccdc1a60, type: 3}
   - {fileID: 3286163911610860551, guid: 1856ee65b810adc469992a4e800107d8, type: 3}
   - {fileID: 3286163911610860551, guid: 3df7765c0e65b9b4796742fa95f0c68b, type: 3}
@@ -6247,6 +6249,7 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: 9de4c86a5ea77b145909973667c3fda1, type: 3}
   - {fileID: 3286163911610860551, guid: fefbd511abbd7c244a25f01b13e53991, type: 3}
   - {fileID: 3286163911610860551, guid: 19ee8e0891555464c860d3af44cc8551, type: 3}
+  - {fileID: 3286163911610860551, guid: 03b3a4ea88325c34cbc355948d5aaeab, type: 3}
   - {fileID: 3286163911610860551, guid: 6178931d474f7104aaf9e534032e2b69, type: 3}
   - {fileID: 3286163911610860551, guid: 3242c761f3837ee478f39b0b32881e2a, type: 3}
   - {fileID: 3286163911610860551, guid: 499df514064ce044b822c745eb937195, type: 3}
@@ -6300,6 +6303,7 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: d6c6dca8df05aa84897dfcc4742f1d6e, type: 3}
   - {fileID: 3286163911610860551, guid: 5ef7c2045d7b24d44892e7d4fe418cb1, type: 3}
   - {fileID: 3286163911610860551, guid: fd43ba255b90cb84089ae8565cd74753, type: 3}
+  - {fileID: 3286163911610860551, guid: a5940aa495cfde14ba0a0fc8e7bde44b, type: 3}
 --- !u!1 &2136920110
 GameObject:
   m_ObjectHideFlags: 0

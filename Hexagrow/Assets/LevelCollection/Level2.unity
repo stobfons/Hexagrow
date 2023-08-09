@@ -788,8 +788,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 955858917}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+      - m_Target: {fileID: 955858918}
+        m_TargetAssemblyTypeName: GameFinish, Assembly-CSharp
         m_MethodName: returnMenu
         m_Mode: 1
         m_Arguments:
