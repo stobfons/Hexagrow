@@ -105,7 +105,7 @@ public void OnEndDrag(PointerEventData eventData)
         
         if(placeable && joker==false){
             placeable = false;
-            map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(53*MapManager.getPack())]);
+            map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(53*MapManager.getPack())+MapManager.offset]);
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
             MapManager.checkNow = true;

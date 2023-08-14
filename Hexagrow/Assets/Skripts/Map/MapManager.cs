@@ -42,6 +42,7 @@ public class MapManager : MonoBehaviour
 
     public static bool checkNow = false;
     public static bool foundPath = false;
+    public static int offset = 0;
 
     public void Start()
     {
@@ -360,14 +361,23 @@ public class MapManager : MonoBehaviour
                         nameTag = dataFromTiles[map.GetTile(gridPosition)].nameTag;
                         if (nameTag != null)
                         {
-                            if (texturePack.Contains("classic"))
+                            if (texturePack.Contains("classic")){
                                 pack = 0;
-                            if (texturePack.Contains("halloween"))
+                                offset = 0;
+                            }
+                                
+                            if (texturePack.Contains("halloween")){
                                 pack = 1;
-                            if (texturePack.Contains("christmas"))
+                                offset = 1;
+                            }
+                            if (texturePack.Contains("christmas")){
                                 pack = 2;
-                            if (texturePack.Contains("cherry"))
+                                offset = 1;
+                            }
+                            if (texturePack.Contains("cherry")){
                                 pack = 3;
+                                offset = 1;
+                            }
 
                             if (nameTag.Contains("empty"))
                             {
