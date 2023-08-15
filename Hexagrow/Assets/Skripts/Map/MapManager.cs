@@ -43,6 +43,8 @@ public class MapManager : MonoBehaviour
     public static bool checkNow = false;
     public static bool foundPath = false;
 
+    public static int offset = 0;
+
     public void Start()
     {
         changeTextures();
