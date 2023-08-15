@@ -175,7 +175,7 @@ public class MapManager : MonoBehaviour
                                     if (hexMap[x + even, y + ynum] == 2)
                                     {
                                         //print("Try Connection from ("+hexMap[x,y]+")"+(gridPosition.x)+" : "+(gridPosition.y)+ " to: ("+hexMap[x-1,y]+")"+(gridPosition.x-1)+" : "+(gridPosition.y) );
-                                        if (map.GetTile(tempPosition).name.Contains(num2))
+                                        if (map.GetTile(tempPosition).name.Contains(num2)|| dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start"))
                                         {
                                             if (hexMap[x + even, y+ ynum] == 3)
                                             {
@@ -184,28 +184,11 @@ public class MapManager : MonoBehaviour
                                             else hexMap[x, y] = 2;
                                             //print("connected to start");
                                         }
-                                        if ( dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("start"))
-                                        {
-                                            if (hexMap[x + even, y + ynum] == 3)
-                                            {
-                                                foundPath = true;
-                                            }
-                                            else hexMap[x, y] = 2;
-                                            //print("connected to start");
-                                        }
+
                                     }
                                     if (hexMap[x + even, y + ynum] == 3)
                                     {
-                                        if (map.GetTile(tempPosition).name.Contains(num2))
-                                        {
-                                            if (hexMap[x + even, y + ynum] == 2)
-                                            {
-                                                foundPath = true;
-                                            }
-                                            else hexMap[x, y] = 3;
-                                            //print("connected to goal");
-                                        }
-                                        if (dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal"))
+                                        if (map.GetTile(tempPosition).name.Contains(num2)|| dataFromTiles[map.GetTile(tempPosition)].nameTag.Contains("goal"))
                                         {
                                             if (hexMap[x + even, y + ynum] == 2)
                                             {

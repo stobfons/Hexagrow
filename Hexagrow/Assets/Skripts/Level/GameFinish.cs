@@ -90,8 +90,8 @@ public class GameFinish : MonoBehaviour
     }
 
     public void returnMenu(){
-        
-        changeAudio.musicOf="LevelSelection"; 
+        SoundManager.triggerVar = true;
+        changeAudio.musicOf="Menu"; 
         TexturepackManager.newSceneAudio = true;
         begin();
         SceneManager.LoadScene("LevelSelection");
