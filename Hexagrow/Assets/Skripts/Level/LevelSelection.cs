@@ -59,7 +59,7 @@ public class LevelSelection
         if (targetTile != null)
         {
             string nameTag = dataFromTiles[targetTile].nameTag;
-            print(nameTag);
+            //print(nameTag);
             if (nameTag.Contains(dragTo))
             {
                 placeable = true;

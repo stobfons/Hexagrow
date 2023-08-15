@@ -18,13 +18,17 @@ public class changeDragPath: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("classic"))
-        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(0*53)];
-        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("halloween"))
-        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(1*53)];
-        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("christmas"))
-        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(2*53)];
-        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("cherry"))
-        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(3*53)];
+        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("classic")){
+        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(0*54)];
+        }
+        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("halloween")){
+        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(1*54)];
+        }
+        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("christmas")){
+        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(2*54)];
+        }
+        if(GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("cherry")){
+        this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite = sprites[MapManager.getTile(this.gameObject.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(3*54)];
+        }
     }
 }

@@ -34,6 +34,6 @@ public class LevelChager : MonoBehaviour
                     }
                 }
             }
-        } else print("not change");
+        } //else print("not change");
     }
 }
