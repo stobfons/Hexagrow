@@ -182,7 +182,7 @@ public class MapManager : MonoBehaviour
                                 }
                                 if (map.GetTile(gridPosition).name.Contains("6"))
                                 {
-                                    print("check 6");
+                                    //print("check 6");
                                     num2 = "3";  ynum = 0; even = -1; vecnum = 0;
                                     hexEditor(gridPosition.x, gridPosition.y, even, vecnum, num2, ynum);
                                 }
@@ -329,6 +329,7 @@ public class MapManager : MonoBehaviour
     }
     public static int getTile(string tag)
     {
+        print("Tag: "+tag);
         switch(tag){
         case ("12Sprite"):
             return 0;

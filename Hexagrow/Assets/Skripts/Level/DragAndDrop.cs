@@ -105,7 +105,7 @@ public void OnEndDrag(PointerEventData eventData)
         
         if(placeable && joker==false){
             placeable = false;
-            map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(53*MapManager.getPack())+MapManager.offset]);
+            map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(54*MapManager.getPack())+MapManager.offset]);
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
             MapManager.checkNow = true;
@@ -113,7 +113,23 @@ public void OnEndDrag(PointerEventData eventData)
             eventData.pointerEnter.transform.position = eventData.pointerEnter.transform.parent.position; // Reset to Lap of Daddy (Parent Position) - aka SnapBack
         }
         if(placeable && joker){
-            map.SetTile(gridPosition,emptyTiles[0]);
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("classic"))
+            {
+                map.SetTile(gridPosition, emptyTiles[0]);
+            }
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("halloween"))
+            {
+                map.SetTile(gridPosition, emptyTiles[2]);
+            }
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("christmas"))
+            {
+                map.SetTile(gridPosition, emptyTiles[4]);
+            }
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("cherry"))
+            {
+                map.SetTile(gridPosition, emptyTiles[6]);
+            }
+
             joker = false;
             placeable = false;
             Destroy(eventData.pointerEnter);
