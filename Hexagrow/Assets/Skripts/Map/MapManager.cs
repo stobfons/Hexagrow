@@ -38,6 +38,8 @@ public class MapManager : MonoBehaviour
     public string newPack = "classic";
     public static string isPack;
 
+    int[,] TilePath;
+
     public void Start()
     {
         changeTextures();
@@ -101,6 +103,15 @@ public class MapManager : MonoBehaviour
         for (gridPosition.x = -25; gridPosition.x <= 25; gridPosition.x++)  {
             for (gridPosition.y = -25; gridPosition.y <= 0; gridPosition.y++) {
                 //////// onDragEnd check for Path
+                TileBase tile = map.GetTile(tilePosition);
+                if (dataFromTiles[tile].name == 'EmptyTile')
+                    TilePath[gridPosition.x, gridPosition.x] = 0;
+                else if (dataFromTiles[tile].name == 'PathTile')
+                    TilePath[gridPosition.x, gridPosition.x] = 1;
+                else if (dataFromTiles[tile].name == 'StartTile')
+                    TilePath[gridPosition.x, gridPosition.x] = 2;
+                else if(dataFromTiles[tile].name == 'GoalTile')
+                    TilePath[gridPosition.x, gridPosition.x] = 3;
             }
         }
 

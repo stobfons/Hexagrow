@@ -100,10 +100,10 @@ public void OnEndDrag(PointerEventData eventData)
                     } else placeable = false;
             }
             print(Input.mousePosition.y);
-        if(Input.mousePosition.y<750f){
+        /*if(Input.mousePosition.y<750f){
             placeable = false;
             joker = false;
-        }
+        }*/
         }else placeable = false;
         MapManager stacks = GameObject.Find("MapManager").GetComponent<MapManager>();
         
