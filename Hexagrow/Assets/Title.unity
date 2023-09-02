@@ -1275,7 +1275,7 @@ MonoBehaviour:
   speed: 100
   sceneName: Menu
   changeScene: 1
-  timer: 17
+  timer: 18
   pathParent: {fileID: 563084813}
 --- !u!114 &709744369
 MonoBehaviour:
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   audioFile:
   - {fileID: 8300000, guid: cdfc5592d3aa9994687951883426d3e5, type: 3}
   - {fileID: 8300000, guid: 3ab15b411326f7c4a81d9917388052e8, type: 3}
-  - {fileID: 8300000, guid: cdfc5592d3aa9994687951883426d3e5, type: 3}
+  - {fileID: 8300000, guid: 8f2cdf69e04764749b6c9b020229c68c, type: 3}
   - {fileID: 8300000, guid: 687f234d8b366344fa64672d4d3580a5, type: 3}
   - {fileID: 8300000, guid: cdfc5592d3aa9994687951883426d3e5, type: 3}
   - {fileID: 8300000, guid: 3ab15b411326f7c4a81d9917388052e8, type: 3}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 687f234d8b366344fa64672d4d3580a5, type: 3}
   - {fileID: 8300000, guid: cdfc5592d3aa9994687951883426d3e5, type: 3}
   - {fileID: 8300000, guid: f3e633060ba77744fb866268b5d30add, type: 3}
-  - {fileID: 8300000, guid: cdfc5592d3aa9994687951883426d3e5, type: 3}
+  - {fileID: 8300000, guid: 49ff938fbcd282e4ebaf315beb7b4f13, type: 3}
   - {fileID: 8300000, guid: cdfc5592d3aa9994687951883426d3e5, type: 3}
 --- !u!1 &785784442
 GameObject:

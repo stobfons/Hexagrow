@@ -43,6 +43,8 @@ public class DragAndDropToScene
     Transform parentAfterDrag; // set layer of object on the last
     private RectTransform rectTransform;
     public string dragTo = "goal";
+    public static string getDrag = "goal";
+    public static string getScene = "goal";
 
     /// Additional Variables
     //public string sceneName = "0Example"; // next scene
@@ -56,6 +58,8 @@ public class DragAndDropToScene
     // Update is called once per frame
     void Update()
     {
+        
+            getScene = SceneManager.GetActiveScene().name;
         if (isChanging)
         {
             timer -=Time.deltaTime;
@@ -137,6 +141,7 @@ public class DragAndDropToScene
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
             nextScene = eventData.pointerEnter.name;
+            getDrag = nextScene;
             changeScene();
         } else eventData.pointerEnter.transform.position = eventData.pointerEnter.transform.parent.position; // Reset to Lap of Daddy (Parent Position)
     }

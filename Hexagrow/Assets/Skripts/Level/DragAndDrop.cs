@@ -99,40 +99,43 @@ public void OnEndDrag(PointerEventData eventData)
                          placeable=true;
                     } else placeable = false;
             }
-            print(Input.mousePosition.y);
-        /*if(Input.mousePosition.y<750f){
-            placeable = false;
-            joker = false;
-        }*/
+            //print(Input.mousePosition.y);
         }else placeable = false;
         MapManager stacks = GameObject.Find("MapManager").GetComponent<MapManager>();
         
         if(placeable && joker==false){
             placeable = false;
-            map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(53*MapManager.getPack())]);
+            map.SetTile(gridPosition,pathTiles[MapManager.getTile(eventData.pointerEnter.GetComponent<Unity.VectorGraphics.SVGImage>().sprite.name)+(54*MapManager.getPack())+MapManager.offset]);
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
-            hasPath = MapManager.checkPath(); ///////////////// checks for Path after Tile was Dropped
-            print("Path was found?: "+hasPath); //////////// print check
+            MapManager.checkNow = true;
         } else {
             eventData.pointerEnter.transform.position = eventData.pointerEnter.transform.parent.position; // Reset to Lap of Daddy (Parent Position) - aka SnapBack
         }
         if(placeable && joker){
-            map.SetTile(gridPosition,emptyTiles[0]);
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("classic"))
+            {
+                map.SetTile(gridPosition, emptyTiles[0]);
+            }
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("halloween"))
+            {
+                map.SetTile(gridPosition, emptyTiles[2]);
+            }
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("christmas"))
+            {
+                map.SetTile(gridPosition, emptyTiles[4]);
+            }
+            if (GameObject.Find("MapManager").GetComponent<MapManager>().newPack.Contains("cherry"))
+            {
+                map.SetTile(gridPosition, emptyTiles[6]);
+            }
+
             joker = false;
             placeable = false;
             Destroy(eventData.pointerEnter);
             SoundManager.Instance.PlaySound(_clip);
         }
-        ///////// after placed check
-        if(((stacks.hexStack1.childCount+stacks.hexStack2.childCount+stacks.hexStack3.childCount)<=1)&&(!hasPath)){
-                GameOver.isOver = true;
-            } else {
-                if (hasPath){
-                    print("Game Finish");
-                    GameOver.isOver = true;
-                }
-            }
+        
     }
 
     

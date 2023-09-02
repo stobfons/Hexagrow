@@ -11,6 +11,8 @@ public class BackButton : MonoBehaviour
     public static bool isChanging = false;
     public static bool hasChanged = false;
     private float timer = 0.5f;
+    public static string getScene;
+    public static string getDrag;
 
     public static void setChange(){
         change= true;
@@ -28,6 +30,9 @@ public class BackButton : MonoBehaviour
             change=false;
         }
         ///////
+        getScene = SceneManager.GetActiveScene().name;
+        
+        
         if (isChanging)
         {
             timer -=Time.deltaTime;
@@ -57,6 +62,7 @@ public class BackButton : MonoBehaviour
     void back()
     {
         nextScene = gameObject.name;
+        getDrag = nextScene;
         isChanging = true;
     }
 }

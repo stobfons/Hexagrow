@@ -8,7 +8,7 @@ public class LoaderObject
     public int level;
     public string currentPack;
     public int[] texturePacks;
-    public int[] records;
+    public List<int> records  = new List<int>();
     public int coins;
     public float vol1;
     public float vol2;
@@ -26,6 +26,6 @@ public class LoaderObject
         vol2 = Loader.v2;
         vol3 = Loader.v3;
         fullScreen = Loader.fs;
-        Debug.Log("Saved TP: "+currentPack);
+        //Debug.Log("Saved TP: "+currentPack);
     }
 }

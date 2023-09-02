@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     private float tempVolume;
     public static float v1,v2,v3;
     public static bool safetyVar = false;
+    public static bool triggerVar = false;
 
     void Awake(){
         if (Instance == null){
@@ -45,12 +46,15 @@ public class SoundManager : MonoBehaviour
         if(GameFinish.isFinish){
             Over();
         } else if(!PauseMenu.isPaused && !GameOver.isOver)Continue();
-
-        if((DragAndDropToScene.isChanging || BackButton.isChanging || LevelChager.isChanging || TryAgain.isChanging || PathFollower.isChanging)&&!ready){
+        
+        if((DragAndDropToScene.isChanging || BackButton.isChanging || LevelChager.isChanging || TryAgain.isChanging || PathFollower.isChanging || triggerVar)&&!ready){
             temps = false;
+            triggerVar = false;
+            if((!(DragAndDropToScene.getDrag.Contains("Levelselection")&&DragAndDropToScene.getScene.Contains("Menu")))||(!(BackButton.getDrag.Contains("Menu")&&BackButton.getScene.Contains("LevelSelection")))){
            ChangeMusicVolume(_musicSource.volume*0.98f);
            if(_musicSource.volume<0.1f){
             _musicSource.Stop();
+            }
             ready=true;
             Loader.v2=tempVolume;
            }
