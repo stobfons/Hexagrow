@@ -421,7 +421,7 @@ public class MapManager : MonoBehaviour
             return 43; 
         case ("2346Sprite"):
             return 44; 
-        case ("2356Sprite"):
+        case ("2456Sprite"):
             return 45; 
         case ("3456Sprite"):
             return 46; 
