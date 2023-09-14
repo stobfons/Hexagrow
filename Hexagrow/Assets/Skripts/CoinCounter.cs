@@ -8,7 +8,7 @@ public class CoinCounter : MonoBehaviour
     public static CoinCounter instance;
 
     public Text coinText;
-    public static int currentCoins = 100;
+    public static int currentCoins = 0;
     private static int coins = currentCoins;
 
     void Awake(){

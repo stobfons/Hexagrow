@@ -11,7 +11,7 @@ public class Loader : MonoBehaviour
     public static string cp = "classic";
     public static int[] t = {1,0,0,0};
     public static List<int> r = new List<int>();
-    public static int c = 100;
+    public static int c = 0;
     public static float v1 = 1;
     public static float v2 = 1;
     public static float v3 = 1;
