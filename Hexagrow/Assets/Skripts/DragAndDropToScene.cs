@@ -74,6 +74,12 @@ public class DragAndDropToScene
                         Loader.save();
                         Application.Quit();
                     }
+                    if (nextScene.Contains("New"))
+                    {
+                        Loader.newGame();
+                        SceneManager.LoadScene("Menu");
+
+                    }
                     else
                     {
                     SceneManager.LoadScene(nextScene);

@@ -4,12 +4,12 @@ using UnityEngine;
 
 
 public class Loader : MonoBehaviour
-	
+
 
 {
     public static int l = 1;
     public static string cp = "classic";
-    public static int[] t = {1,0,0,0};
+    public static int[] t = { 1, 0, 0, 0 };
     public static List<int> r = new List<int>();
     public static int c = 0;
     public static float v1 = 1;
@@ -17,26 +17,26 @@ public class Loader : MonoBehaviour
     public static float v3 = 1;
     public static bool fs = true;
 
-    void Update(){
-{
-            SoundManager.Instance.ChangeMasterVolume(v1);
-            SoundManager.Instance.ChangeMusicVolume(v2);
-            SoundManager.Instance.ChangeEffectsVolume(v3);
+    void Update() {
 
-        if(!TexturepackManager.currentTexturepack.Contains(cp)){
+        SoundManager.Instance.ChangeMasterVolume(v1);
+        SoundManager.Instance.ChangeMusicVolume(v2);
+        SoundManager.Instance.ChangeEffectsVolume(v3);
+
+        if (!TexturepackManager.currentTexturepack.Contains(cp)) {
             TexturepackManager.setPack(cp);
         }
-        if(CoinCounter.currentCoins!=c){
+        if (CoinCounter.currentCoins != c) {
             CoinCounter.setCoins(c);
         }
-    }
+
     }
 
-    public void loadNow(){
+    public void loadNow() {
         Debug.Log("Loaded");
 
         LoaderObject data = SaveGame.load();
-        if(data == null){
+        if (data == null) {
             Debug.Log("Error");
         }
         l = data.level;
@@ -48,11 +48,28 @@ public class Loader : MonoBehaviour
         v2 = data.vol2;
         v3 = data.vol3;
         fs = data.fullScreen;
-        Debug.Log("Loaded Sound: "+v1);
+        Debug.Log("Loaded Sound: " + v1);
     }
 
-    public static void save(){
+    public static void save() {
         //Debug.Log("saved");
         SaveGame.save(new LoaderObject());
     }
+
+    public static void newGame()
+    {
+        LoaderObject data = SaveGame.load();
+        l = 1;
+        cp = "classic";
+        t = data.texturePacks;
+        r = new List<int>();
+        c = 0;
+        v1 = 1;
+        v2 = 1;
+        v3 = 1;
+        fs = true;
+    }
+
+
+    
 }
