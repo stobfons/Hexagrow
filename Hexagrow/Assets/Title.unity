@@ -1285,7 +1285,7 @@ MonoBehaviour:
   speed: 100
   sceneName: Menu
   changeScene: 1
-  timer: 18
+  timer: 19
   pathParent: {fileID: 563084813}
 --- !u!114 &709744369
 MonoBehaviour:

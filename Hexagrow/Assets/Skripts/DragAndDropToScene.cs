@@ -55,6 +55,13 @@ public class DragAndDropToScene
     [SerializeField]
     public AudioClip _clip;
 
+    void Start()
+    {
+
+        // Confines the cursor
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     // Update is called once per frame
     void Update()
     {
