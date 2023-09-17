@@ -74,6 +74,10 @@ public class SettingsDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        /*
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        gridPosition = map.WorldToCell(mousePosition);
+        print(gridPosition);*/
         transform.SetParent(parentAfterDrag);
         if (targetTile != null)
         {
